@@ -40,7 +40,8 @@ public class BasePage {
     }
 
     public void clickElement(String locator) {
-        find(locator).click();
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+        element.click();
     }
 
     public void write(String locator, String keysToSend) {
