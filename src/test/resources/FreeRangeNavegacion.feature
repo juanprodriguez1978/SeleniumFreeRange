@@ -23,7 +23,7 @@ Feature: Navigation
         When I go to Cursos using the navigation bar
         And I select Introducción al Testing
 
-    @Plans @Courses
+    @Plans
     Scenario: Users can select a plan when signing up
         When I select Elegir Plan
         Then The client can validate the options in the checkout page

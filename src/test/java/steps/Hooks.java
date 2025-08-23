@@ -1,26 +1,28 @@
 package steps;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.After;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.BasePage;
 
 public class Hooks extends BasePage {
 
-    public Hooks() {
-        super(driver);
-    }
-
-    @After
-    public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            scenario.log("Scenario failing, please refer to the image attached to this report");
-            final byte[] screenshot = ((TakesScreenshot) driver)
-                    .getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "Screenshot of the error");
+    @Before
+    public void setUp() {
+        // Inicializa el WebDriver solo si aún no se ha inicializado
+        if (driver == null) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
         }
     }
 
+    @After
+    public void tearDown() {
+        // Cierra el navegador solo si el driver no es null
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
