@@ -16,12 +16,10 @@ public class BasePage {
     protected static WebDriver driver;
     protected WebDriverWait wait;
 
-    // Constructor sin argumentos
     public BasePage() {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // Constructor que acepta un WebDriver
     public BasePage(WebDriver driver) {
         BasePage.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
