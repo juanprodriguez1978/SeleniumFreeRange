@@ -1,18 +1,23 @@
 package steps;
 
 import java.util.List;
+import java.util.Arrays;
+import java.time.Duration;
 
+import io.cucumber.java.PendingException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-import java.util.Arrays;
 
 import io.cucumber.java.en.*;
+import pages.BasePage;
 import pages.PaginaCursos;
 import pages.PaginaFundamentosTesting;
 import pages.PaginaPrincipal;
 import pages.PaginaRegistro;
 
-public class FreeRangeSteps {
+public class FreeRangeSteps extends BasePage {
     SoftAssert soft = new SoftAssert();
 
     PaginaPrincipal landingPage = new PaginaPrincipal();
@@ -38,8 +43,6 @@ public class FreeRangeSteps {
     @And("^(?:I|The user|The client) selects? Introducción al Testing$")
     public void navigateToIntro() {
         cursosPage.clickIntroduccionTestingLink();
-        //fundamentosPage.clickIntroduccionTestingLink();
-
     }
 
     @Then("^(?:I|The user|The client) can validate the options in the checkout page$")
@@ -51,4 +54,13 @@ public class FreeRangeSteps {
         Assert.assertEquals(listaEsperada, lista);*/
     }
 
+    @And("I wait 5 seconds")
+    public void iWaitSeconds() throws InterruptedException {
+        Thread.sleep(5000);
+    }
+
+    @Then("I validate the URL is {string}")
+    public void iValidateTheURLIs(String url) {
+        Assert.assertEquals(driver.getCurrentUrl(), "https://" + url + "/");
+    }
 }
