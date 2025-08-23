@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    tools {
+        gradle 'Gradle'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Clonando repositorio...'
+                git 'https://github.com/juanprodriguez1978/SeleniumFreeRange.git'
+            }
+        }
+        stage('Build and Test') {
+            steps {
+                echo 'Ejecutando la tarea de Gradle'
+                sh 'gradle clean test'
+            }
+        }
+    }
+}

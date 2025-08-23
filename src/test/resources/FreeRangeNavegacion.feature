@@ -7,7 +7,6 @@ Feature: Simple Navigation
   Scenario Outline: User can navigate to a URL and verify it
     Given I navigate to <url>
 
-
     Examples:
       | url                      |
       | www.freerangetesters.com |
