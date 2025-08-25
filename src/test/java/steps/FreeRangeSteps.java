@@ -28,6 +28,7 @@ public class FreeRangeSteps extends BasePage {
     @Given("I navigate to www.freerangetesters.com")
     public void iNavigateToFRT() {
         landingPage.navigateToFreeRangeTesters();
+
     }
 
     @When("I go to {word} using the navigation bar")
