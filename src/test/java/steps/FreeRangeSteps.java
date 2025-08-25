@@ -50,7 +50,6 @@ public class FreeRangeSteps extends BasePage {
         /*List<String> lista = registro.returnPlanDropdownValues();
         List<String> listaEsperada = Arrays.asList("Academia: $16.99 / mes • 17 productos",
                 "Academia: $176 / año • 17 productos", "Free: Gratis • 1 producto");
-
         Assert.assertEquals(listaEsperada, lista);*/
     }
 
